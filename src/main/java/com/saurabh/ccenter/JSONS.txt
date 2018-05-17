@@ -1,0 +1,15 @@
+    {"name":"Ram","mobileNumber":"8912731927","fatherName":"Kamal Rana","motherName":"Shivani Rana","address":"3-22, Nehru Nagar, Delhi","schoolName":"A.P.J. School","className":"9th",
+    "dateOfAdmission":"22/01/2018","fatherMobileNumber":"9856747272","motherMobileNumber":"2627356228","remarks":"good student"}
+    {"name":"Ritu","mobileNumber":"234567888","fatherName":"Mohan Singh","motherName":"","address":"3-22, Ram Nagar, Delhi","schoolName":"A.P.J. School","className":"12th",
+        "dateOfAdmission":"22/01/2018","fatherMobileNumber":"36474747838","motherMobileNumber":"46472828234","remarks":"very good student"}
+
+
+    {"className":"11th","dateOfAdmission":"12/04/2018","motherMobileNumber":"366363626"}
+
+{"name":"science-cbse-12","className":"12th","boardName":"CBSE","subjectName":"science","fee":"500","batchTime":"15:30 to 16:30","teacherName":"Ramesh"}
+{"name":"math-cbse-12","className":"12th","boardName":"CBSE","subjectName":"match","fee":"600","batchTime":"14:30 to 15:30","teacherName":"Suresh"}
+
+{"studentId":"2","batchId":"1","submittedTo":"Ramesh","transactionDate":"14/02/18","amount":"500"}
+{"studentId":"1","batchId":"1","submittedTo":"Ramesh","transactionDate":"16/02/18","amount":"400"}
+{"studentId":"2","batchId":"2","submittedTo":"Suresh","transactionDate":"06/02/18","amount":"600"}
+{"studentId":"1","batchId":"2","submittedTo":"Suresh","transactionDate":"08/02/18","amount":"500"}

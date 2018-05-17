@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver: org.sqlite.JDBC
+    url: jdbc:sqlite:dbfile.db
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: com.saurabh.ccenter.config.SQLiteDialect
+    show-sql: false
+
+#  view:
+#    suffix: .html
+#    prefix: /static/htmls/
+#  thymeleaf:
+#    cache: false
+#    check-template: true
+#    check-template-location: true
+#    content-type: text/html
+#    enabled: true
+#    encoding: UTF-8
+#ccenter:
+#  tables:
+#    creation:
+#      - CREATE TABLE IF NOT EXISTS student(studentId INTEGER Primary key, studentName varchar(30) not null, fatherName varchar(30), phoneNumber varcahr(35))
+#      - CREATE TABLE IF NOT EXISTS batch(batchId INTEGER Primary key, batchName varchar(30),className varchar(30) not null,timmings varchar(30), fees INTEGER,subject varachar(30), session varchar(30))
+#      - CREATE TABLE IF NOT EXISTS course(CourseId INTEGER Primary key, studentId INTEGER, batchId INTEGER, fees INTEGER, month varchar(50), dateOfSubmission varchar(10))

@@ -85,6 +85,17 @@ public class StaticController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/viewAll")
+    public ModelAndView getViewsAll(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_student");
+        modelAndView.addObject("student", studentService.getAllStudentDetails());
+        modelAndView.addObject("batch", batchService.getAllBatchDetails());
+        modelAndView.addObject("fee", feeService.getAllFeeDetails());
+        System.out.println(modelAndView);
+        return modelAndView;
+    }
+
 
     @GetMapping(value = "/addBatch")
     public ModelAndView addBatch(){

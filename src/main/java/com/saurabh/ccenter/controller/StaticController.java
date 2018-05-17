@@ -107,13 +107,30 @@ public class StaticController {
     }
 
     @PostMapping(value = "/searchByStudentName")
-    public String searchByStudentName(HttpServletResponse response, StudentModel studentModel){
-        return "redirect:/student/searchByName/"+studentModel.name;
+    public ModelAndView searchByStudentName(HttpServletResponse response, StudentModel studentModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_student");
+        modelAndView.addObject("student", studentService.getByName(studentModel.name));
+        return modelAndView;
+        //return "redirect:/student/searchByName/"+studentModel.name;
     }
 
     @PostMapping(value = "/searchByBatchId")
-    public String searchByBatchId(HttpServletResponse response, BatchModel batchModel){
-        return "redirect:/batch/searchById/"+batchModel.id;
+    public ModelAndView searchByBatchId(HttpServletResponse response, BatchModel batchModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_batch");
+        modelAndView.addObject("batch", batchService.getById(batchModel.id));
+        return modelAndView;
+        //return "redirect:/batch/searchById/"+batchModel.id;
+    }
+
+    @PostMapping(value = "/searchSudentByBatchId")
+        public ModelAndView searchSudentByBatchId(HttpServletResponse response, BatchModel batchModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_fee");
+        modelAndView.addObject("fee", feeService.getByBatchId(batchModel.id));
+        return modelAndView;
+        //return "redirect:/batch/searchById/"+batchModel.id;
     }
 
 }

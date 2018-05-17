@@ -29,6 +29,15 @@ public class StudentService {
         return null;
     }
 
+    public StudentModel getByBatchId(Integer id) {
+        if (studentJpaRepository.exists(id)) {
+            LoggerMessage.logAndReturn(MessageEnums.STUDENT_SHOWED.getMsg() ,Integer.toString(id));
+            return studentJpaRepository.findOne(id);
+        }
+        return null;
+    }
+
+
     public List<StudentModel> getByName(String name) {
         List<StudentModel> studentModelList = new ArrayList<StudentModel>();
         studentJpaRepository.findAll().forEach(studentModel -> {

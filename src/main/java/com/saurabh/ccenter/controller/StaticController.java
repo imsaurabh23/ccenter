@@ -1,5 +1,6 @@
 package com.saurabh.ccenter.controller;
 
+import com.saurabh.ccenter.model.BatchModel;
 import com.saurabh.ccenter.model.StudentModel;
 import com.saurabh.ccenter.model.UserModel;
 import com.saurabh.ccenter.service.BatchService;
@@ -57,45 +58,16 @@ public class StaticController {
         return "redirect:/user/getAll";
     }
 
-
-    @GetMapping(value = "/viewBatch")
-    public ModelAndView getViewBatch(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("view_batch");
-        modelAndView.addObject("batch", batchService.getAllBatchDetails());
-        System.out.println(modelAndView);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/viewFee")
-    public ModelAndView getViewFee(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("view_fee");
-        modelAndView.addObject("fee", feeService.getAllFeeDetails());
-        System.out.println(modelAndView);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/viewStudent")
-    public ModelAndView getViewstudent(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("view_student");
-        modelAndView.addObject("student", studentService.getAllStudentDetails());
-        System.out.println(modelAndView);
-        return modelAndView;
-    }
-
     @GetMapping(value = "/viewAll")
     public ModelAndView getViewsAll(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("view_student");
+        modelAndView.setViewName("view_all");
         modelAndView.addObject("student", studentService.getAllStudentDetails());
         modelAndView.addObject("batch", batchService.getAllBatchDetails());
         modelAndView.addObject("fee", feeService.getAllFeeDetails());
         System.out.println(modelAndView);
         return modelAndView;
     }
-
 
     @GetMapping(value = "/addBatch")
     public ModelAndView addBatch(){
@@ -124,15 +96,24 @@ public class StaticController {
     }
 
     @PostMapping(value = "/searchByStudentId")
-    public String searchByStudentId(HttpServletResponse response, StudentModel studentModel){
-        System.out.println("IDDDDDDD : "+studentModel.id);
-        return "redirect:/student/searchById/"+studentModel.id;
+    public ModelAndView searchByStudentId(HttpServletResponse response, StudentModel studentModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_student");
+        modelAndView.addObject("student", studentService.getById(studentModel.id));
+        return modelAndView;
+
+        //return studentService.getById(studentModel.id).toString();
+        //return "redirect:/student/searchById/"+studentModel.id;
     }
 
     @PostMapping(value = "/searchByStudentName")
     public String searchByStudentName(HttpServletResponse response, StudentModel studentModel){
-        System.out.println("IDDDDDDD : "+studentModel.name);
         return "redirect:/student/searchByName/"+studentModel.name;
+    }
+
+    @PostMapping(value = "/searchByBatchId")
+    public String searchByBatchId(HttpServletResponse response, BatchModel batchModel){
+        return "redirect:/batch/searchById/"+batchModel.id;
     }
 
 }

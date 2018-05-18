@@ -58,12 +58,14 @@ public class FeeService {
     }
 
     public List<FeeModel> getByBatchId(Integer batchId) {
+        System.out.println("ERROR :::::::: "+batchId);
         List<FeeModel> feeModelList = new ArrayList<FeeModel>();
         feeJpaRepository.findAll().forEach(feeModel -> {
             if (feeModel.batchId.intValue()==batchId.intValue()) {
                 feeModelList.add(feeModel);
             }
         });
+        System.out.println("ERROR :::::::: "+batchId);
         LoggerMessage.logAndReturn(MessageEnums.FEE_SHOWED.getMsg() ,Integer.toString(batchId));
         return feeModelList;
     }

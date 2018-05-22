@@ -139,5 +139,14 @@ public class StaticController {
         //return "redirect:/batch/searchById/"+batchModel.id;
     }
 
+    @PostMapping(value = "/searchFeeByStudentName")
+    public ModelAndView searchFeeByStudentName(HttpServletResponse response, StudentModel studentModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("view_fee");
+        modelAndView.addObject("fee", feeService.getByName(studentModel.name));
+        return modelAndView;
+        //return "redirect:/batch/searchById/"+batchModel.id;
+    }
+
 }
 

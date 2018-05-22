@@ -1,5 +1,6 @@
 package com.saurabh.ccenter.service;
 
+import com.saurabh.ccenter.model.FeeModel;
 import com.saurabh.ccenter.util.LoggerMessage;
 import com.saurabh.ccenter.enums.MessageEnums;
 import com.saurabh.ccenter.model.BatchModel;
@@ -40,8 +41,18 @@ public class BatchService {
     }
 
     public String addBatch(BatchModel batchModel) {
+        batchModel=makeAllUpperCase(batchModel);
         BatchModel batchModelReturn = batchJpaRepository.save(batchModel);
         return LoggerMessage.logAndReturn(MessageEnums.BATCH_ADD.getMsg(), batchModelReturn.name);
+    }
+
+    private BatchModel makeAllUpperCase(BatchModel batchModel) {
+        batchModel.name=batchModel.name.toUpperCase();
+        batchModel.boardName=batchModel.boardName.toUpperCase();
+        batchModel.className=batchModel.className.toUpperCase();
+        batchModel.subjectName=batchModel.subjectName.toUpperCase();
+        batchModel.teacherName=batchModel.teacherName.toUpperCase();
+        return batchModel;
     }
 
     public String deleteById(Integer id) {
@@ -67,4 +78,5 @@ public class BatchService {
         batchJpaRepository.deleteAll();
         return LoggerMessage.logAndReturn(MessageEnums.BATCH_ALL_DELETE.getMsg());
     }
+
 }

@@ -2,17 +2,14 @@ package com.saurabh.ccenter.controller;
 
 import com.saurabh.ccenter.model.BatchModel;
 import com.saurabh.ccenter.model.StudentModel;
-import com.saurabh.ccenter.model.UserModel;
 import com.saurabh.ccenter.service.BatchService;
 import com.saurabh.ccenter.service.FeeService;
+import com.saurabh.ccenter.service.StudentBathchAllocationService;
 import com.saurabh.ccenter.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +22,8 @@ public class StaticController {
     private FeeService feeService;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private StudentBathchAllocationService studentBathchAllocationService;
 
 
     @GetMapping(value = "/")
@@ -59,12 +58,13 @@ public class StaticController {
     }
 
     @GetMapping(value = "/viewAll")
-    public ModelAndView getViewsAll(){
+    public ModelAndView viewAll(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("view_all");
         modelAndView.addObject("student", studentService.getAllStudentDetails());
         modelAndView.addObject("batch", batchService.getAllBatchDetails());
         modelAndView.addObject("fee", feeService.getAllFeeDetails());
+        modelAndView.addObject("studentBatchAllocation", studentBathchAllocationService.getAllBathcStudentAllocationDetails());
         System.out.println(modelAndView);
         return modelAndView;
     }
@@ -85,6 +85,12 @@ public class StaticController {
     public ModelAndView addStudent(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("add_student");
+        return modelAndView;
+    }
+    @GetMapping(value = "/allocateStudentToBatch")
+    public ModelAndView allocateStudentToBatch(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("add_student_batch_allocation");
         return modelAndView;
     }
 

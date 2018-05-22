@@ -50,8 +50,20 @@ public class StudentService {
     }
 
     public String addStudent(StudentModel studentModel) {
+        studentModel= makeAllUpperCase(studentModel);
         StudentModel studentModelReturn = studentJpaRepository.save(studentModel);
         return LoggerMessage.logAndReturn(MessageEnums.STUDENT_ADD.getMsg() , studentModelReturn.name);
+    }
+
+    private StudentModel makeAllUpperCase(StudentModel studentModel) {
+        studentModel.name=studentModel.name.toUpperCase();
+        studentModel.fatherName=studentModel.fatherName.toUpperCase();
+        studentModel.motherName=studentModel.motherName.toUpperCase();
+        studentModel.address=studentModel.address.toUpperCase();
+        studentModel.schoolName=studentModel.schoolName.toUpperCase();
+        studentModel.className=studentModel.className.toUpperCase();
+        studentModel.remarks=studentModel.remarks.toUpperCase();
+        return studentModel;
     }
 
     public String deleteStudentById(Integer id) {

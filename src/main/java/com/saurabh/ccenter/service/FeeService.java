@@ -1,5 +1,6 @@
 package com.saurabh.ccenter.service;
 
+import com.saurabh.ccenter.model.StudentModel;
 import com.saurabh.ccenter.util.LoggerMessage;
 import com.saurabh.ccenter.enums.MessageEnums;
 import com.saurabh.ccenter.model.FeeModel;
@@ -69,9 +70,15 @@ public class FeeService {
     }
 
     public String addFeeDetails(FeeModel feeModel) {
+        feeModel=makeAllUpperCase(feeModel);
         FeeModel feeModelReturn = feeJpaRepository.save(feeModel);
         return LoggerMessage.logAndReturn(MessageEnums.FEE_ADD.getMsg() , feeModelReturn.studentId + " " +
                 feeModelReturn.batchId + " " + feeModelReturn.transactionDate + " " + feeModelReturn.amount);
+    }
+
+    private FeeModel makeAllUpperCase(FeeModel feeModel) {
+        feeModel.submittedTo=feeModel.submittedTo.toUpperCase();
+        return feeModel;
     }
 
     public String deleteById(Integer id) {

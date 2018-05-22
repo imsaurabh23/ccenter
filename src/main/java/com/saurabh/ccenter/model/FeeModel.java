@@ -21,6 +21,7 @@ public class FeeModel {
     public Integer batchId;
     public String submittedTo;
     public String transactionDate;
+    public String feeType;
     public Integer amount;
 }
 

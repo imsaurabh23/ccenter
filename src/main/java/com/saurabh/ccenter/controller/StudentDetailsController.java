@@ -39,7 +39,7 @@ public class StudentDetailsController {
     public RedirectView getAll(StudentModel studentModel){
         String responseMsg = studentService.addStudent(studentModel);
         if(MessageEnums.STUDENT_ADD.getMsg().equals(responseMsg)){
-            return new RedirectView("/dashboard");
+                    return new RedirectView("/dashboard");
         }
         return null;
     }

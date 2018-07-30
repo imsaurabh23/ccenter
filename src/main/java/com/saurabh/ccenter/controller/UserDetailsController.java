@@ -5,6 +5,7 @@ import com.saurabh.ccenter.model.UserModel;
 import com.saurabh.ccenter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -53,13 +54,13 @@ public class UserDetailsController {
     }
 
     @PostMapping(value = "/verifyPassword")
-    public void verifyPassword(HttpServletResponse response, UserModel userModel) throws IOException {
+    public RedirectView verifyPassword(HttpServletResponse response, UserModel userModel) throws IOException {
         MessageEnums messageEnums = userService.verifyPassword(userModel.name, userModel.password);
         if(messageEnums ==MessageEnums.USER_MATCHED){
-            response.sendRedirect("/dashboard");
+            return new RedirectView("/dashboard");
         }
         else {
-            response.sendRedirect("/");
+            return new RedirectView("/");
         }
     }
 }

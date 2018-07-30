@@ -12,7 +12,7 @@ import java.util.List;
 public class CreateQueryNames {
     private List<String> listOfTableCreationQueries=new ArrayList<>();
     public List<String> getCreateQueryNames(){
-        System.out.println("QUERY ::::::::::::;:::::::::::::::::: "+listOfTableCreationQueries.get(0));
+        System.out.println("QUERY :::::::::::::::::::::::::::::: "+listOfTableCreationQueries.get(0));
         return listOfTableCreationQueries;
     }
 }
